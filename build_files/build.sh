@@ -13,15 +13,45 @@ cp -avf "/ctx/system_files"/. /
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y tmux
+PACKAGES=(
+  ghostty
+  wireplumber
+  pipewire
+  cascadia-code-nf-fonts
+  sddm
+  powertop
+  rclone
+  restic
+  # hyprland related
+  hyprland
+  xdg-desktop-portal-hyprland
+  polkit-kde-agent # system-wide privileges
+  qt5-wayland
+  qt6-wayland
+  dunst     # notifications daemon
+  waybar    # status bar
+  cliphist  # clipboard history
+  swww      # wallpaper manager
+  hyprlock  # screen locker
+  hypridle  # idle manager
+  wlogout   # logout, suspend, restart,...
+  grimblast # screenshots
+  nwg-look  # setting gtk themes
+  ## setting qt themes
+  qt5ct
+  qt6ct
+  kvantum
+)
 
-# Use a COPR Example:
-#
-# dnf5 -y copr enable ublue-os/staging
-# dnf5 -y install package
-# Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
+# copr required for hyprland
+dnf5 -y copr enable ublue-os/staging
+dnf5 install -y "${PACKAGES[@]}"
+dnf5 -y copr disable ublue-os/staging
 
-#### Example for enabling a System Unit File
-
+# enable podman
 systemctl enable podman.socket
+
+# enable brew
+systemctl preset brew-setup.service &&
+  systemctl preset brew-update.timer &&
+  systemctl preset brew-upgrade.timer
