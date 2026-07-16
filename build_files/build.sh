@@ -14,12 +14,18 @@ cp -avf "/ctx/system_files"/. /
 
 # this installs a package from fedora repos
 PACKAGES=(
-  ghostty
+  kitty
   cascadia-code-nf-fonts
   sddm
   powertop
   rclone
   restic
+  stow
+  eza
+  fd
+  ripgrep
+  zoxide
+  nvim
   # hyprland related
   hyprland
   xdg-desktop-portal-hyprland
@@ -42,11 +48,9 @@ PACKAGES=(
 )
 
 # copr required for ghostty
-dnf -y copr enable scottames/ghostty
 dnf -y copr enable sdegler/hyprland
 dnf -y copr enable tofik/nwg-shell
 dnf5 install -y "${PACKAGES[@]}"
-dnf -y copr disable scottames/ghostty
 dnf -y copr disable sdegler/hyprland
 dnf -y copr disable tofik/nwg-shell
 
