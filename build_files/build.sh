@@ -23,17 +23,17 @@ PACKAGES=(
   # hyprland related
   hyprland
   xdg-desktop-portal-hyprland
-  polkit-kde-agent # system-wide privileges
-  qt5-wayland
-  qt6-wayland
-  dunst     # notifications daemon
+  hyprpolkitagent # system-wide privileges
+  qt5-qtwayland
+  qt6-qtwayland
+  mako      # notifications daemon
   waybar    # status bar
   cliphist  # clipboard history
-  swww      # wallpaper manager
+  hyprpaper # wallpaper manager
   hyprlock  # screen locker
   hypridle  # idle manager
   wlogout   # logout, suspend, restart,...
-  grimblast # screenshots
+  hyprshot  # screenshots
   nwg-look  # setting gtk themes
   ## setting qt themes
   qt5ct
