@@ -43,14 +43,12 @@ PACKAGES=(
 
 # copr required for ghostty
 dnf -y copr enable scottames/ghostty
-dnf -y copr enable soal/hyprland
-dnf -y copr enable nwg/nwg-look
-dnf -y copr enable colintheshots/kde
+dnf -y copr enable sdegler/hyprland
+dnf -y copr enable tofik/nwg-shell
 dnf5 install -y "${PACKAGES[@]}"
 dnf -y copr disable scottames/ghostty
 dnf -y copr disable soal/hyprland
-dnf -y copr disable nwg/nwg-look
-dnf -y copr disable colintheshots/kde
+dnf -y copr disable tofik/nwg-shell
 
 # enable podman
 systemctl enable podman.socket
