@@ -15,8 +15,6 @@ cp -avf "/ctx/system_files"/. /
 # this installs a package from fedora repos
 PACKAGES=(
   ghostty
-  wireplumber
-  pipewire
   cascadia-code-nf-fonts
   sddm
   powertop
@@ -43,10 +41,16 @@ PACKAGES=(
   kvantum
 )
 
-# copr required for hyprland
-dnf5 -y copr enable ublue-os/staging
+# copr required for ghostty
+dnf -y copr enable scottames/ghostty
+dnf -y copr enable soal/hyprland
+dnf -y copr enable nwg/nwg-look
+dnf -y copr enable colintheshots/kde
 dnf5 install -y "${PACKAGES[@]}"
-dnf5 -y copr disable ublue-os/staging
+dnf -y copr disable scottames/ghostty
+dnf -y copr disable soal/hyprland
+dnf -y copr disable nwg/nwg-look
+dnf -y copr disable colintheshots/kde
 
 # enable podman
 systemctl enable podman.socket
